@@ -2,7 +2,16 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.0'
+
 gem 'devise'
+
+group :development, :test do
+   gem 'sqlite3'
+end
+
+group :production do
+   gem 'pg'
+end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
@@ -54,13 +63,3 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-# Use sqlite3 as the database for Active Record
-group :development, :test do
-  gem 'sqlite3'
-end
-
-group :production do
-  gem 'pg'
-  gem 'rails_12factor'
-end
